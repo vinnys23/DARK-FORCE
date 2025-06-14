@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DARK FORCE ⚡🖤</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #f1c40f;
+    }
+    .hidden { display: none; }
+    header, footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1a1a1a;
+    }
+    .logo {
+      width: 100px;
+    }
+    h1 { font-size: 2.5rem; margin: 0.5rem 0; }
+    .slogan { font-style: italic; color: #e0b500; }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .produto-card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 0 10px #111;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .produto-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #f1c40f;
+    }
+    .produto-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .preco {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffda44;
+    }
+    .produto-detalhe {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    .produto-detalhe img {
+      width: 80%;
+      border-radius: 12px;
+    }
+    .voltar {
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #f1c40f;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo-dark-force.jpg" alt="Logo Dark Force" class="logo" />
+    <h1>DARK FORCE ⚡🖤</h1>
+    <p class="slogan">LIBERE A FORÇA QUE HÁ EM VOCÊ 🫵🏼</p>
+  </header>  <div id="galeria" class="galeria">
+    <div class="produto-card" onclick="mostrarProduto(0)">
+      <img src="img/creatina-darklab.jpg" alt="Creatina Dark Lab">
+      <h3>Creatina Dark Lab 300g</h3>
+      <p class="preco">R$185,00</p>
+    </div>
+    <div class="produto-card" onclick="mostrarProduto(1)">
+      <img src="img/whey-darklab.jpg" alt="Whey Dark Lab">
+      <h3>Whey Dark Lab 1kg</h3>
+      <p class="preco">R$175,00</p>
+    </div>
+    <div class="produto-card" onclick="mostrarProduto(2)">
+      <img src="img/whey-max.jpg" alt="Whey Max Titanium">
+      <h3>Whey Max Titanium 900g</h3>
+      <p class="preco">R$115,00</p>
+    </div>
+    <div class="produto-card" onclick="mostrarProduto(3)">
+      <img src="img/creatina-growth.jpg" alt="Creatina Growth">
+      <h3>Creatina Growth 100g</h3>
+      <p class="preco">R$80,00</p>
+    </div>
+    <div class="produto-card" onclick="mostrarProduto(4)">
+      <img src="img/creatina-hardcore.jpg" alt="Creatina Hardcore">
+      <h3>Creatina Hardcore 300g</h3>
+      <p class="preco">R$85,00</p>
+    </div>
+  </div>  <div id="produto-detalhe" class="produto-detalhe hidden">
+    <img id="produto-img" src="" alt="Produto">
+    <h2 id="produto-nome"></h2>
+    <p class="preco" id="produto-preco"></p>
+    <p id="produto-descricao"></p>
+    <button class="voltar" onclick="voltarGaleria()">⬅ Voltar</button>
+  </div>  <footer>
+    <p>&copy; 2025 DARK FORCE. Todos os direitos reservados.</p>
+  </footer>  <script>
+    const produtos = [
+      {
+        nome: "Creatina Dark Lab 300g",
+        preco: "R$185,00",
+        img: "img/creatina-darklab.jpg",
+        descricao: "Creatina de alta pureza para explosão muscular e performance máxima."
+      },
+      {
+        nome: "Whey Dark Lab 1kg",
+        preco: "R$175,00",
+        img: "img/whey-darklab.jpg",
+        descricao: "Proteína concentrada sabor baunilha, ideal para recuperação e crescimento muscular."
+      },
+      {
+        nome: "Whey Max Titanium 900g",
+        preco: "R$115,00",
+        img: "img/whey-max.jpg",
+        descricao: "Whey sabor chocolate, com 21g de proteína por dose. Alta qualidade e absorção."
+      },
+      {
+        nome: "Creatina Growth 100g",
+        preco: "R$80,00",
+        img: "img/creatina-growth.jpg",
+        descricao: "Creatina monohidratada Creapure para mais força nos treinos."
+      },
+      {
+        nome: "Creatina Hardcore 300g",
+        preco: "R$85,00",
+        img: "img/creatina-hardcore.jpg",
+        descricao: "Creatina micronizada, zero sódio e sem aditivos. Pura performance."
+      },
+    ];
+
+    function mostrarProduto(index) {
+      const p = produtos[index];
+      document.getElementById("galeria").classList.add("hidden");
+      document.getElementById("produto-img").src = p.img;
+      document.getElementById("produto-nome").textContent = p.nome;
+      document.getElementById("produto-preco").textContent = p.preco;
+      document.getElementById("produto-descricao").textContent = p.descricao;
+      document.getElementById("produto-detalhe").classList.remove("hidden");
+    }
+
+    function voltarGaleria() {
+      document.getElementById("produto-detalhe").classList.add("hidden");
+      document.getElementById("galeria").classList.remove("hidden");
+    }
+  </script></body>
+</html>
